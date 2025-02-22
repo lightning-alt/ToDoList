@@ -4,6 +4,11 @@ body {
     margin: 0;
     padding: 20px;
 }
+.to-do-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
 
 .container {
     max-width: 400px;
@@ -41,7 +46,14 @@ button {
 button:hover {
     background: #218838;
 }
+button {
+  transition: background-color 0.3s, transform 0.2s;
+}
 
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
 ul {
     list-style: none;
     padding: 0;
@@ -58,7 +70,15 @@ li {
 li:last-child {
     border-bottom: none;
 }
-
+input:focus {
+  border: 2px solid #007bff;
+  box-shadow: 0 0 5px #007bff;
+}
+input[type="checkbox"]:checked + label {
+  text-decoration: line-through;
+  color: green;
+  transition: all 0.3s;
+}
 .delete-btn {
     background: #dc3545;
     color: white;
