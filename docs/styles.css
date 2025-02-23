@@ -106,18 +106,21 @@ input[type="checkbox"]:checked + label {
     transition: all 0.3s;
 }
 
+/* Ensure all delete buttons have the same size */
 .delete-btn {
-    background: #dc3545;
+    background: #dc3545; /* Red background */
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 5px 10px; /* Padding for better appearance */
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s;
+    width: 80px; /* Fixed width for all delete buttons */
+    text-align: center; /* Center the text */
 }
 
 .delete-btn:hover {
-    background: #c82333;
+    background: #c82333; /* Darker red on hover */
 }
 
 #personalizedMessage {
