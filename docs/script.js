@@ -1,3 +1,4 @@
+// Get references to elements
 const taskInput = document.getElementById('task-input');
 const addTaskButton = document.getElementById('add-task');
 const taskList = document.getElementById('task-list');
@@ -8,7 +9,7 @@ const personalizedMessage = document.getElementById('personalizedMessage');
 // Function to add a task
 const addTask = () => {
     const taskText = taskInput.value.trim();
-    if (taskText === '') return;
+    if (taskText === '') return; // Do not add empty tasks
 
     const li = document.createElement('li');
     li.textContent = taskText;
@@ -33,24 +34,37 @@ const addTask = () => {
     taskInput.value = ''; // Clear input field
 };
 
-// Function to handle name submission
-nameForm.addEventListener('submit', (event) => {
-    event.preventDefault(); // Prevent the form from submitting
+// Check if we are on the name input page
+if (nameForm) {
+    // Function to handle name submission
+    nameForm.addEventListener('submit', (event) => {
+        event.preventDefault(); // Prevent the form from submitting
 
-    const name = nameInput.value.trim(); // Get the name from the input
-    personalizedMessage.textContent = `Hello, ${name}! Welcome to your personalized To-Do List!`;
-    personalizedMessage.style.display = 'block'; // Show the personalized message
+        const name = nameInput.value.trim(); // Get the name from the input
+        localStorage.setItem('userName', name); // Store the name in local storage
 
-    // Optionally, clear the input field
-    nameInput.value = '';
-});
+        // Redirect to the To-Do List page
+        window.location.href = 'todo.html'; // Ensure this file exists in the same directory
+    });
+}
 
-// Event listener for adding tasks
-addTaskButton.addEventListener('click', addTask);
+// Check if we are on the To-Do List page
+if (taskInput) {
+    // Get the user's name from local storage
+    const userName = localStorage.getItem('userName');
 
-// Allow pressing Enter to add a task
-taskInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        addTask();
+    // Display the personalized welcome message
+    if (userName) {
+        personalizedMessage.textContent = `Hello, ${userName}! Welcome to your personalized To-Do List!`;
     }
-});
+
+    // Event listener for adding tasks
+    addTaskButton.addEventListener('click', addTask);
+
+    // Allow pressing Enter to add a task
+    taskInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            addTask();
+        }
+    });
+}
