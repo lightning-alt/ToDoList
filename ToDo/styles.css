@@ -35,8 +35,15 @@ h2 {
     margin-bottom: 20px; /* Added margin for spacing */
 }
 
+.welcome-container p:nth-child(2) {
+    color: #28a745; /* Green color for the first paragraph */
+}
+
+.welcome-container p:nth-child(3) {
+    color: #dc3545; /* Red color for the second paragraph */
+}
+
 p {
-    color: #555; /* Dark gray color for text */
     margin: 10px 0; /* Added margin for spacing */
     line-height: 1.5; /* Improved line height for readability */
     font-size: 16px; /* Set font size for better visibility */
