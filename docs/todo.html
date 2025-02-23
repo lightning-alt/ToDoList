@@ -22,12 +22,14 @@
     <script src="script.js"></script>
     <script>
         // Get the user's name from local storage
-        const userName = localStorage.getItem('userName');
-        const personalizedMessage = document.getElementById('personalizedMessage');
+        const clientName = localStorage.getItem('clientName'); // Retrieve the name
 
         // Display the personalized welcome message
-        if (userName) {
-            personalizedMessage.textContent = `Hello, ${userName}! Welcome to your personalized To-Do List!`;
+        const personalizedMessage = document.getElementById('personalizedMessage');
+        if (clientName) {
+            personalizedMessage.textContent = `Hello, ${clientName}! Welcome to your personalized To-Do List!`;
+        } else {
+            personalizedMessage.textContent = 'Welcome, Guest!'; // Fallback if no name is found
         }
     </script>
 </body>
