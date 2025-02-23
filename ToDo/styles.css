@@ -119,3 +119,9 @@ input[type="checkbox"]:checked + label {
 .delete-btn:hover {
     background: #c82333;
 }
+
+#personalizedMessage {
+    color: #007bff; /* Blue color for the personalized message */
+    font-size: 18px; /* Slightly larger font size */
+    margin-top: 15px; /* Space above the message */
+}
