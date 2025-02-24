@@ -5,19 +5,29 @@ const nameForm = document.getElementById('nameForm');
 const nameInput = document.getElementById('nameInput');
 const personalizedMessage = document.getElementById('personalizedMessage');
 
-// Function to add a task
-const addTask = () => {
-    const taskText = taskInput.value.trim();
-    if (taskText === '') return;
+// Load tasks from Local Storage
+const loadTasks = () => {
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    tasks.forEach(task => {
+        addTaskToDOM(task.text, task.completed);
+    });
+};
 
+// Function to add a task to the DOM
+const addTaskToDOM = (taskText, completed = false) => {
     const li = document.createElement('li');
     li.textContent = taskText;
+    if (completed) {
+        li.classList.add('completed');
+    }
 
     // Create a checkbox to mark as completed
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
+    checkbox.checked = completed;
     checkbox.addEventListener('change', () => {
         li.classList.toggle('completed');
+        updateLocalStorage();
     });
 
     // Create a delete button
@@ -25,12 +35,36 @@ const addTask = () => {
     deleteButton.textContent = 'Delete';
     deleteButton.addEventListener('click', () => {
         taskList.removeChild(li);
+        updateLocalStorage();
     });
 
     li.prepend(checkbox);
     li.appendChild(deleteButton);
     taskList.appendChild(li);
+};
+
+// Function to add a task
+const addTask = () => {
+    const taskText = taskInput.value.trim();
+    if (taskText === '') return;
+
+    addTaskToDOM(taskText);
+    updateLocalStorage(); // Update Local Storage
     taskInput.value = ''; // Clear input field
+};
+
+// Function to update Local Storage
+const updateLocalStorage = () => {
+    const tasks = [];
+    const taskItems = taskList.querySelectorAll('li');
+    taskItems.forEach(item => {
+        const checkbox = item.querySelector('input[type="checkbox"]');
+        tasks.push({
+            text: item.textContent.replace('Delete', '').trim(),
+            completed: checkbox.checked
+        });
+    });
+    localStorage.setItem('tasks', JSON.stringify(tasks));
 };
 
 // Function to handle name submission
@@ -44,6 +78,9 @@ nameForm.addEventListener('submit', (event) => {
     // Optionally, clear the input field
     nameInput.value = '';
 });
+
+// Load tasks on page load
+loadTasks();
 
 // Event listener for adding tasks
 addTaskButton.addEventListener('click', addTask);
