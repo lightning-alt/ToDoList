@@ -21,10 +21,12 @@
             event.preventDefault(); // Prevent the form from submitting
 
             const name = document.getElementById('nameInput').value.trim(); // Get the name from the input
-            localStorage.setItem('userName', name); // Store the name in local storage
-
-            // Redirect to the To-Do List page
-            window.location.href = 'todo.html';
+            if (name) {
+                localStorage.setItem('userName', name); // Store the name in local storage
+                window.location.href = 'todo.html'; // Redirect to the To-Do List page
+            } else {
+                alert('Please enter a valid name.'); // Alert if the name is empty
+            }
         });
     </script>
 </body>
