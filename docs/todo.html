@@ -5,12 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .completed {
-            text-decoration: line-through;
-            color: gray;
-        }
-    </style>
 </head>
 <body>
     <div class="welcome-container">
@@ -21,61 +15,6 @@
         <ul id="task-list"></ul>
     </div>
 
-    <script>
-        const taskInput = document.getElementById('task-input');
-        const addTaskButton = document.getElementById('add-task');
-        const taskList = document.getElementById('task-list');
-        const personalizedMessage = document.getElementById('personalizedMessage');
-
-        // Load user name from Local Storage
-        const userName = localStorage.getItem('userName');
-        if (userName) {
-            personalizedMessage.textContent = `Hello, ${userName}! Here are your tasks:`;
-        }
-
-        // Load tasks from Local Storage
-        const loadTasks = () => {
-            const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-            tasks.forEach(task => {
-                addTaskToDOM(task.text, task.completed);
-            });
-        };
-
-        // Function to add a task to the DOM
-        const addTaskToDOM = (taskText, completed = false) => {
-            const li = document.createElement('li');
-            li.textContent = taskText;
-            if (completed) {
-                li.classList.add('completed');
-            }
-
-            // Create a checkbox to mark as completed
-            const checkbox = document.createElement('input');
-            checkbox.type = 'checkbox';
-            checkbox.checked = completed;
-            checkbox.addEventListener('change', () => {
-                li.classList.toggle('completed');
-                updateLocalStorage();
-            });
-
-            // Create a delete button
-            const deleteButton = document.createElement('button');
-            deleteButton.textContent = 'Delete';
-            deleteButton.addEventListener('click', () => {
-                taskList.removeChild(li);
-                updateLocalStorage();
-            });
-
-            li.prepend(checkbox);
-            li.appendChild(deleteButton);
-            taskList.appendChild(li);
-        };
-
-        // Function to add a task
-        const addTask = () => {
-            const taskText = taskInput.value.trim();
-            if (taskText === '') return;
-
-            addTaskToDOM(taskText);
-            updateLocalStorage(); // Update Local Storage
-            task
+    <script src="script.js"></script>
+</body>
+</html>
