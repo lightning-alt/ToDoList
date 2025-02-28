@@ -12,40 +12,40 @@ document.getElementById('submitName')?.onclick = function() {
 };
 
 // Functionality for todo.html
-if (document.getElementById('welcomeMessage')) {
+window.onload = function() {
     const username = localStorage.getItem('username');
     if (username) {
         document.getElementById('welcomeMessage').innerText = `Welcome, ${username}!`;
     } else {
         document.getElementById('welcomeMessage').innerText = 'Welcome!';
     }
-}
 
-document.getElementById('addTask')?.onclick = function() {
-    const taskInput = document.getElementById('taskInput');
-    const taskText = taskInput.value;
+    document.getElementById('addTask')?.onclick = function() {
+        const taskInput = document.getElementById('taskInput');
+        const taskText = taskInput.value;
 
-    if (taskText) {
-        const li = document.createElement('li');
-        li.textContent = taskText;
+        if (taskText) {
+            const li = document.createElement('li');
+            li.textContent = taskText;
 
-        const markButton = document.createElement('button');
-        markButton.textContent = '✔️';
-        markButton.onclick = function() {
-            li.style.textDecoration = 'line-through';
-        };
+            const markButton = document.createElement('button');
+            markButton.textContent = '✔️';
+            markButton.onclick = function() {
+                li.style.textDecoration = 'line-through';
+            };
 
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = '❌';
-        deleteButton.onclick = function() {
-            li.remove();
-        };
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = '❌';
+            deleteButton.onclick = function() {
+                li.remove();
+            };
 
-        li.appendChild(markButton);
-        li.appendChild(deleteButton);
-        document.getElementById('taskList').appendChild(li);
-        taskInput.value = '';
-    } else {
-        alert('Please enter a task.');
-    }
+            li.appendChild(markButton);
+            li.appendChild(deleteButton);
+            document.getElementById('taskList').appendChild(li);
+            taskInput.value = '';
+        } else {
+            alert('Please enter a task.');
+        }
+    };
 };
