@@ -7,39 +7,27 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Name Input Section -->
     <div class="name-form" id="nameForm">
         <h1>Welcome to SmartTask! 👋</h1>
         <form onsubmit="handleNameSubmit(event)">
-            <input type="text" 
-                   id="userName" 
-                   placeholder="Enter your name" 
-                   required>
+            <input type="text" id="userName" placeholder="Enter your name" required>
             <button type="submit">Start Organizing</button>
         </form>
     </div>
 
-    <!-- Main App Container -->
     <div class="container hidden" id="appContainer">
-        <!-- Welcome Header -->
         <div class="welcome-section">
             <h1>Welcome back, <span id="userNameDisplay"></span>! 🎯</h1>
         </div>
         
-        <!-- Task Input Form -->
         <form class="task-form" onsubmit="handleTaskSubmit(event)">
-            <input type="text" 
-                   id="taskInput" 
-                   placeholder="What needs to be done?">
+            <input type="text" id="taskInput" placeholder="What needs to be done?">
             <button type="submit">Add Task</button>
         </form>
 
-        <!-- Task List -->
-        <ul class="task-list" id="taskList">
-            <!-- Tasks will be dynamically inserted here -->
-        </ul>
+        <ul class="task-list" id="taskList"></ul>
     </div>
 
-    <script src="script.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
