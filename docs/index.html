@@ -20,8 +20,8 @@
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const userName = document.getElementById('userName').value.trim();
-            if(userName) {
-                localStorage.setItem('todoUserName', userName);
+            if (userName) {
+                localStorage.setItem('todoUser Name', userName); // Fixed key name
                 window.location.href = 'todo.html';
             }
         });
