@@ -1,30 +1,46 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo List - Login</title>
+    <title>SmartTask - Modern Todo List</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to Todo List</h1>
-        <form id="loginForm">
-            <div class="input-section">
-                <input type="text" id="userName" placeholder="Enter your name" required>
-                <button type="submit">Continue</button>
-            </div>
+    <!-- Name Input Section -->
+    <div class="name-form" id="nameForm">
+        <h1>Welcome to SmartTask! 👋</h1>
+        <form onsubmit="handleNameSubmit(event)">
+            <input type="text" 
+                   id="userName" 
+                   placeholder="Enter your name" 
+                   required>
+            <button type="submit">Start Organizing</button>
         </form>
     </div>
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const userName = document.getElementById('userName').value.trim();
-            if (userName) {
-                localStorage.setItem('todoUser Name', userName); // Fixed key name
-                window.location.href = 'todo.html';
-            }
-        });
-    </script>
+
+    <!-- Main App Container -->
+    <div class="container hidden" id="appContainer">
+        <!-- Welcome Header -->
+        <div class="welcome-section">
+            <h1>Welcome back, <span id="userNameDisplay"></span>! 🎯</h1>
+        </div>
+        
+        <!-- Task Input Form -->
+        <form class="task-form" onsubmit="handleTaskSubmit(event)">
+            <input type="text" 
+                   id="taskInput" 
+                   placeholder="What needs to be done?">
+            <button type="submit">Add Task</button>
+        </form>
+
+        <!-- Task List -->
+        <ul class="task-list" id="taskList">
+            <!-- Tasks will be dynamically inserted here -->
+        </ul>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
