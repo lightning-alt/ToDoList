@@ -13,6 +13,17 @@
         <button id="submitName">Submit</button> <!-- Button to submit the username -->
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Functionality for index.html
+        document.getElementById('submitName').onclick = function() {
+            const username = document.getElementById('username').value; // Get the username from the input field
+            if (username) {
+                localStorage.setItem('username', username); // Store username in localStorage
+                window.location.href = 'todo.html'; // Redirect to todo.html
+            } else {
+                alert('Please enter your name.'); // Alert if the input is empty
+            }
+        };
+    </script>
 </body>
 </html>
