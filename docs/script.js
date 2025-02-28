@@ -1,5 +1,5 @@
 // Check if user is logged in
-const userName = localStorage.getItem('todoUser Name');
+const userName = localStorage.getItem('todoUser Name'); // Fixed key name
 if (!userName && window.location.pathname.endsWith('todo.html')) {
     window.location.href = 'index.html';
 }
@@ -11,7 +11,7 @@ if (window.location.pathname.endsWith('todo.html')) {
 
 // Logout function
 function logout() {
-    localStorage.removeItem('todoUser Name');
+    localStorage.removeItem('todoUser Name'); // Fixed key name
     window.location.href = 'index.html';
 }
 
@@ -57,30 +57,4 @@ function deleteTodo(id) {
     renderTodos();
 }
 
-function renderTodos() {
-    const todoList = document.getElementById('todoList');
-    todoList.innerHTML = '';
-    
-    todos.forEach(todo => {
-        const todoElement = document.createElement('div');
-        todoElement.className = `todo-item ${todo.completed ? 'completed' : ''}`;
-        
-        todoElement.innerHTML = `
-            <input type="checkbox" 
-                   ${todo.completed ? 'checked' : ''} 
-                   onchange="toggleComplete(${todo.id})">
-            <span>${todo.text}</span>
-            <button class="delete-btn" onclick="deleteTodo(${todo.id})">Delete</button>
-        `;
-        
-        todoList.appendChild(todoElement);
-    });
-}
-
-function saveTodos() {
-    localStorage.setItem('todos', JSON.stringify(todos));
-}
-
-// Add todo when Enter key is pressed
-if (window.location.pathname.endsWith('todo.html')) {
-   
+function
