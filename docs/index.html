@@ -3,31 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
+    <title>To-Do List App</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="welcome-container">
-        <h1>Welcome to Our To-Do List App!</h1>
-        <p>Please enter your name to get started:</p>
-        <form id="nameForm">
-            <input type="text" id="nameInput" placeholder="Enter your name" required>
-            <button type="submit">Submit</button>
-        </form>
+    <div class="container">
+        <h1>Welcome to the To-Do List App</h1>
+        <input type="text" id="username" placeholder="Enter your name" />
+        <button id="submitName">Submit</button>
     </div>
 
-    <script>
-        document.getElementById('nameForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the form from submitting
-
-            const name = document.getElementById('nameInput').value.trim(); // Get the name from the input
-            if (name) {
-                localStorage.setItem('userName', name); // Store the name in local storage
-                window.location.href = 'todo.html'; // Redirect to the To-Do List page
-            } else {
-                alert('Please enter a valid name.'); // Alert if the name is empty
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
