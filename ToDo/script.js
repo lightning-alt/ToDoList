@@ -12,9 +12,13 @@ document.getElementById('submitName')?.onclick = function() {
 };
 
 // Functionality for todo.html
-const username = localStorage.getItem('username');
-if (username) {
-    document.getElementById('welcomeMessage').innerText = `Welcome, ${username}!`;
+if (document.getElementById('welcomeMessage')) {
+    const username = localStorage.getItem('username');
+    if (username) {
+        document.getElementById('welcomeMessage').innerText = `Welcome, ${username}!`;
+    } else {
+        document.getElementById('welcomeMessage').innerText = 'Welcome!';
+    }
 }
 
 document.getElementById('addTask')?.onclick = function() {
