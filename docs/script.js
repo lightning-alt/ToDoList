@@ -1,8 +1,8 @@
 // script.js
 
 // Functionality for index.html
-document.getElementById('submitName')?.onclick = function() {
-    const username = document.getElementById('username')?.value; // Get the username from the input field
+document.getElementById('submitName').onclick = function() {
+    const username = document.getElementById('username').value; // Get the username from the input field
     if (username) {
         localStorage.setItem('username', username); // Store username in localStorage
         window.location.href = 'todo.html'; // Redirect to todo.html
@@ -21,7 +21,7 @@ window.onload = function() {
     }
 
     // Add task functionality
-    document.getElementById('addTask')?.onclick = function() {
+    document.getElementById('addTask').onclick = function() {
         const taskInput = document.getElementById('taskInput'); // Get the task input field
         const taskText = taskInput.value; // Get the value of the input field
 
