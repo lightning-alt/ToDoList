@@ -16,6 +16,15 @@ function initializeApp() {
     }
 }
 
+// Logout Functionality
+function handleLogout() {
+    localStorage.removeItem('userName');
+    tasks = [];
+    saveTasks();
+    document.getElementById('nameForm').classList.remove('hidden');
+    document.getElementById('appContainer').classList.add('hidden');
+}
+
 // Task Handling
 let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
@@ -67,5 +76,5 @@ function deleteTask(index) {
     loadTasks();
 }
 
-// Initialize app if user is already logged in
+// Initialize app
 window.onload = initializeApp;
